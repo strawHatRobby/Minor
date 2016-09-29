@@ -19,7 +19,7 @@ class Course(models.Model):
 class Subject(models.Model):
     subject_name = models.CharField(max_length=255,blank=False,unique=True)
     description = models.TextField(default='')
-    syllabus = models.FileField(null=True)
+    syllabus = models.FileField(null=True,blank=True)
     credits = models.IntegerField(default=0)
     course = models.ForeignKey(Course)
     

@@ -7,7 +7,7 @@ from courses.models import Subject
 class Assignment(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=False,default="")
-    file = models.FileField(null=True)
+    file = models.FileField(null=True,blank=True)
     marks = models.IntegerField(default=0)
     time_stamp = models.DateTimeField(auto_now_add=True)
     submission_date = models.DateTimeField(default=datetime.datetime.now,blank=True)
@@ -19,11 +19,9 @@ class Assignment(models.Model):
 class Question(models.Model):
     question = models.CharField(max_length=255)
     marks = models.IntegerField(default=0)
-    order = models.IntegerField(default=0)
     assignment = models.ForeignKey(Assignment)
     
-    class Meta:
-        ordering = ['order',]
+    
     
     def __str__(self):
         return self.question
