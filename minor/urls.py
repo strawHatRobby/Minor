@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^auth/',include('accounts.urls',namespace='auth')),
     url(r'^schools/',include('schools.urls',namespace='school')),
     url(r'^courses/',include('courses.urls',namespace='course')),
+    url(r'^api/v1/courses/',include('rest_api.urls',namespace='rest_api')),
+    url(r'^api_auth/',include('rest_framework.urls',namespace='rest_framework')),
 ]
