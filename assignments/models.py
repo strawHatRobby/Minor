@@ -6,7 +6,7 @@ from courses.models import Subject
 
 class Assignment(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField(blank=False,deafult="")
+    content = models.TextField(blank=False,default="")
     file = models.FileField(null=True)
     marks = models.IntegerField(default=0)
     time_stamp = models.DateTimeField(auto_now_add=True)
