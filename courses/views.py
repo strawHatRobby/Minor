@@ -75,3 +75,9 @@ class CourseUpdateView(CreateView):
             'credits')
     model = models.Course
     
+class CourseDeleteView(DeleteView):
+    model = models.Course
+    success_url = reverse_lazy
+    success_url = reverse_lazy("course:list_course")
+
+    

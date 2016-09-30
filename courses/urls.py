@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^course_list/$',views.CourseListView.as_view(), name='list_course'),
     url(r'^course_list/(?P<pk>\d+)/$',views.CourseDetailView.as_view(), name='detail_course'),
     url(r'^create_course/$',views.CourseCreateView.as_view(model=Course, success_url=reverse_lazy('course:list_course')), name='create_course'),
-    url(r'^edit_course/(?P<pk>\d+)/$',views.CourseUpdateView.as_view(), name='edit_course')
+    url(r'^edit_course/(?P<pk>\d+)/$',views.CourseUpdateView.as_view(model=Course, success_url=reverse_lazy('course:list_course')), name='edit_course'),
+    url(r'^delete_course/(?P<pk>\d+)/$',views.CourseDeleteView.as_view(model=Course, success_url=reverse_lazy('course:list_course')), name='delete_course'),
     # url(r'^assignment_list/(?P<pk>\d+)/$',views.RetrieveUpdateDestroyAssignment.as_view(), name='update_course'),
     ]
