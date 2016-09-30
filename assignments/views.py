@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from pagedown.widgets import PagedownWidget
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.views.generic import (
     TemplateView,ListView,DetailView,
     CreateView,UpdateView,DeleteView
@@ -8,11 +10,11 @@ from django.views.generic import (
 # Create your views here.
 from . import models
 
-class AssignmentListView(ListView):
+class AssignmentListView(LoginRequiredMixin,ListView):
     context_object_name = "assignments"
     model = models.Assignment
     
-class AssignmentDetailView(DetailView):
+class AssignmentDetailView(LoginRequiredMixin,DetailView):
     model = models.Assignment
     
     
@@ -27,11 +29,11 @@ class AssignmentForm(forms.ModelForm):
             'content': PagedownWidget(show_preview=True)
         }
 
-class AssignmentCreateView(CreateView):
+class AssignmentCreateView(LoginRequiredMixin,CreateView):
     form_class = AssignmentForm
     model = models.Assignment
     
-class AssignmentUpdateView(CreateView):
+class AssignmentUpdateView(LoginRequiredMixin,CreateView):
     fields = ('title',
             'content',
             'file',
@@ -40,7 +42,7 @@ class AssignmentUpdateView(CreateView):
             'subject_id')
     model = models.Assignment
     
-class AssignmentDeleteView(DeleteView):
+class AssignmentDeleteView(LoginRequiredMixin,DeleteView):
     model = models.Assignment
     success_url = reverse_lazy("assignment:list_assignment")
     

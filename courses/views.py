@@ -10,16 +10,16 @@ from django.core.urlresolvers import reverse_lazy
 from django import forms
 from . import models 
 from django.views.generic import TemplateView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView,UpdateView
 # Create your views here.
 
 
-class SubjectListView(ListView):
+class SubjectListView(LoginRequiredMixin,ListView):
     context_object_name = "subjects"
     model = Subject
     
-class SubjectDetailView(DetailView):
+class SubjectDetailView(LoginRequiredMixin,DetailView):
     model = Subject
     
 class SubjectForm(forms.ModelForm):
@@ -30,11 +30,11 @@ class SubjectForm(forms.ModelForm):
             'content': PagedownWidget(show_preview=True)
         }
 
-class SubjectCreateView(CreateView):
+class SubjectCreateView(LoginRequiredMixin,CreateView):
     form_class = SubjectForm
     model = models.Subject
     
-class SubjectUpdateView(CreateView):
+class SubjectUpdateView(LoginRequiredMixin,CreateView):
     fields = ('subject_name',
             'description',
             'syllabus',
@@ -42,21 +42,21 @@ class SubjectUpdateView(CreateView):
             'course')
     model = models.Subject
     
-class SubjectDeleteView(DeleteView):
+class SubjectDeleteView(LoginRequiredMixin,DeleteView):
     model = models.Subject
     success_url = reverse_lazy
     success_url = reverse_lazy("subject:list_subject")
     
     
 
-class CourseListView(ListView):
+class CourseListView(LoginRequiredMixin,ListView):
     context_object_name = "courses"
     model = Course
     
 class CourseDetailView(DetailView):
     model = Course
     
-class CourseForm(forms.ModelForm):
+class CourseForm(LoginRequiredMixin,forms.ModelForm):
     class Meta:
         model = Course
         fields = ('course_name', 'start_date', 'end_date', 'credits')
@@ -64,18 +64,18 @@ class CourseForm(forms.ModelForm):
             
         }
 
-class CourseCreateView(CreateView):
+class CourseCreateView(LoginRequiredMixin,CreateView):
     form_class = CourseForm
     model = models.Course
     
-class CourseUpdateView(CreateView):
+class CourseUpdateView(LoginRequiredMixin,CreateView):
     fields = ('course_name',
             'start_date',
             'end_date',
             'credits')
     model = models.Course
     
-class CourseDeleteView(DeleteView):
+class CourseDeleteView(LoginRequiredMixin,DeleteView):
     model = models.Course
     success_url = reverse_lazy
     success_url = reverse_lazy("course:list_course")

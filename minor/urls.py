@@ -19,7 +19,8 @@ from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^$',views.home),
-    url(r'^admin/', admin.site.urls),
+    url(r'^about/$',views.AboutPageView.as_view(),name='about'),
+    url(r'^wonder_twin_2017/', admin.site.urls),
     url(r'^auth/',include('accounts.urls',namespace='auth')),
     url(r'^schools/',include('schools.urls',namespace='schools')),
     url(r'^assignments/',include('assignments.urls',namespace='assignment')),
