@@ -91,8 +91,8 @@
 										</li>
 										<li>
 				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">assignment</i>
-												Assignments
+												<i class="material-icons">course</i>
+												courses
 				                            </a>
 				                        </li>
 				                        <li>
@@ -118,10 +118,12 @@
 				                    <div class="tab-content gallery">
 										<div class="tab-pane active" id="studio">
 				                            <div class="row">
-											<h1>{{ subject.subject_name }}</h1>
-												<p>Credits : <strong>{{ subject.credits }}</strong></p>
-												<p>{{ subject.description}}</p>
+											<h1>Name: {{ subject.subject_name }}</h1>
+												<p>Description: : <strong>{{ subject.description }}</strong></p>
+												<p>Syllabus: {{ subject.syllabus}}</p>
+												<p>Credit: {{ subject.credit }}</p>
 												<p>Course: {{ subject.course }}</p>
+												
 				                            </div>
 				                        </div>
 				                        <div class="tab-pane text-center" id="work">

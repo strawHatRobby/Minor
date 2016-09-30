@@ -4,5 +4,8 @@ from . import views
 urlpatterns = [
     url(r'^assignment_list/$',views.AssignmentListView.as_view(), name='list_assignment'),
     url(r'^assignment_list/(?P<pk>\d+)/$',views.AssignmentDetailView.as_view(), name='detail_assignment'),
+    url(r'^create_assignment/$',views.AssignmentCreateView.as_view(), name='create_assignment'),
+    url(r'^edit_assignment/(?P<pk>\d+)/$',views.AssignmentUpdateView.as_view(), name='edit_assignment'),
+    url(r'^delete_assignment/(?P<pk>\d+)/$',views.AssignmentDeleteView.as_view(), name='delete_assignment'),
     # url(r'^assignment_list/(?P<pk>\d+)/$',views.RetrieveUpdateDestroyAssignment.as_view(), name='update_assignment'),
     ]

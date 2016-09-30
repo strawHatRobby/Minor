@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    #third party apps
+    'pagedown',
+    'markdown_deux',
+    'widget_tweaks',
+    
     #personal apps
     'accounts',
     'assignments',

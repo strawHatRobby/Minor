@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
+# Create your views here.
+/from django.shortcuts import render
 from pagedown.widgets import PagedownWidget
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import (
@@ -24,7 +27,7 @@ class AssignmentForm(forms.ModelForm):
         model = models.Assignment
         fields = ['title', 'content', 'marks', 'submission_date', 'subject_id']
         widgets = {
-            'content': PagedownWidget(show_preview=True)
+            
         }
 
 class AssignmentCreateView(CreateView):
@@ -40,7 +43,7 @@ class AssignmentUpdateView(CreateView):
             'subject_id')
     model = models.Assignment
     
-class AssignmentDeleteView(DeleteView):
+class AsDeleteView(DeleteView):
     model = models.Assignment
     success_url = reverse_lazy("assignment:list_assignment")
     

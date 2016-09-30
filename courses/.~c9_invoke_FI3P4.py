@@ -7,7 +7,7 @@ from schools.models import School
 from pagedown.widgets import PagedownWidget
 from django.core.urlresolvers import reverse_lazy
 # Create your views here.
-from django import forms
+from . import Mode 
 from . import models 
 from django.views.generic import TemplateView
 
@@ -51,27 +51,27 @@ class SubjectDeleteView(DeleteView):
 
 class CourseListView(ListView):
     context_object_name = "courses"
-    model = Course
+    model = Subject
     
 class CourseDetailView(DetailView):
-    model = Course
+    model = Subject
     
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ('course_name', 'start_date', 'end_date', 'credits')
+        fields = ('course_name', 'start_date', 'end_date', 'credits']
         widgets = {
             
         }
 
 class CourseCreateView(CreateView):
     form_class = CourseForm
-    model = models.Course
+    model = models.Subject
     
 class CourseUpdateView(CreateView):
     fields = ('course_name',
             'start_date',
             'end_date',
             'credits')
-    model = models.Course
+    model = models.Subject
     
