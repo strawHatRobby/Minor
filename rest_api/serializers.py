@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from assignments.models import Assignment,Question,Answers
 from courses.models import Course,Subject
-from forums.models import Form,Comments
+# from forums.models import Form,Comments
 from schools.models import School
 
 class CourseSerializer(serializers.ModelSerializer):
