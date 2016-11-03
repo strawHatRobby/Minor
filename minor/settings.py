@@ -14,6 +14,7 @@ import os
 from machina import get_apps as get_machina_apps, MACHINA_MAIN_TEMPLATE_DIR
 from machina import MACHINA_MAIN_STATIC_DIR
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +31,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+
+TWILIO_DEFAULT_CALLERID = '+12513331840'
 
 # Application definition
 
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     #third party apps
     'pagedown',
     'markdown_deux',
+    'django_markdown',
     # 'widget_tweaks',
     
     #personal apps
@@ -52,6 +58,7 @@ INSTALLED_APPS = [
     'courses',
     'schools',
     'rest_framework',
+    'django_twilio',
     
       # Machina related apps:
   'mptt',
@@ -127,6 +134,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
 
 HAYSTACK_CONNECTIONS = {
   'default': {

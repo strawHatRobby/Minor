@@ -15,10 +15,10 @@ class Assignment(models.Model):
     subject_id = models.ForeignKey(Subject)
     
     def __str__(self):
-        return "{} for {} marks".format(self.title,self.marks)
+        return "{} for {} marks for subject {}".format(self.title,self.marks,self.subject_id)
         
     def get_absolute_url(self):
-        return reverse("assignment:list_assignment")
+        return reverse("assignment:list_assignment" )
         
 class Question(models.Model):
     question = models.CharField(max_length=255)
