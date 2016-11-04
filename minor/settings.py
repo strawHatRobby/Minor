@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from machina import get_apps as get_machina_apps, MACHINA_MAIN_TEMPLATE_DIR
-from machina import MACHINA_MAIN_STATIC_DIR
+
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -49,8 +49,10 @@ INSTALLED_APPS = [
     #third party apps
     'pagedown',
     'markdown_deux',
-    'django_markdown',
-    # 'widget_tweaks',
+    'widget_tweaks',
+    
+    
+    
     
     #personal apps
     'accounts',
@@ -60,11 +62,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_twilio',
     
-      # Machina related apps:
-  'mptt',
-  'haystack',
-  'widget_tweaks',
-]  + get_machina_apps()
+
+] 
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,8 +74,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
 
 ]
 
@@ -85,7 +82,7 @@ ROOT_URLCONF = 'minor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates','accounts/templates',MACHINA_MAIN_TEMPLATE_DIR,],
+        'DIRS': ['templates','accounts/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +90,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                 'machina.core.context_processors.metadata',
             ],
         },
     },
@@ -147,10 +143,7 @@ CACHES = {
   'default': {
     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
   },
-  'machina_attachments': {
-    'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-    'LOCATION': '/tmp',
-  }
+  
 }
 
 
@@ -176,6 +169,6 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
         '/home/ubuntu/workspace/static/',
-        MACHINA_MAIN_STATIC_DIR,
+        
     )
 
