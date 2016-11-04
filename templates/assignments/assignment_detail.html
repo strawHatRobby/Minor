@@ -128,8 +128,12 @@
 												<p>Submit by : <stron>{{ assignment.submission_date }}</stron></p>
 												<p>{{ assignment.content|markdown}}</p>
 												<p>Maximum Marks: {{ assignment.marks }}</p>
+												{% if perms.assignments.can_edit_assignment %}
 												<a href="{% url 'assignment:edit_assignment' assignment.id %}" class="btn btn-primary">Edit</a>
+												{% endif %}
+												{% if perms.assignments.can_delete_assignment %}
 												<a href="{% url 'assignment:delete_assignment' assignment.id %}" class="btn btn-danger">Delete</a>
+												{% endif %}
 											</div>
 				                        </div>
 										<div class="tab-pane text-center" id="shows">
