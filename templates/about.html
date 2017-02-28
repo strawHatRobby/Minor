@@ -138,7 +138,7 @@
 			                        <h4 class="title">Amar Arslaan<br />
 										<small class="text-muted">Designer</small>
 									</h4>
-			                        <p class="description">lol.</p>
+			                        <p class="description">Placeholder Text</p>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a>
@@ -150,7 +150,7 @@
 			                        <h4 class="title">Nidhi Yadav<br />
 										<small class="text-muted">Developer</small>
 									</h4>
-			                        <p class="description">lol.</p>
+			                        <p class="description">Placeholder Text</p>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-linkedin"></i></a>
 			                    </div>
@@ -161,7 +161,7 @@
 			                        <h4 class="title">Robin Francis<br />
 										<small class="text-muted">Developer</small>
 									</h4>
-			                        <p>lol.</p>
+			                        <p>Placeholder Text</p>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-google-plus"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-youtube-play"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-twitter"></i></a>
@@ -173,7 +173,7 @@
 			                        <h4 class="title">Siddharth Tiwari<br />
 										<small class="text-muted">Developer</small>
 									</h4>
-			                        <p>lol.</p>
+			                        <p>Placeholder Text</p>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-google-plus"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon"><i class="fa fa-youtube-play"></i></a>
 									<a href="#" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-twitter"></i></a>
@@ -242,16 +242,13 @@
 								   About Us
 								</a>
 							</li>
+							{% if perms.assignments.can_add_assignment %}
 							<li>
-								<a href="#">
-								   Blog
-								</a>
-							</li>
-							<li>
-								<a href="profile-page.html">
+								<a href="{% url 'assignment:list_assignment' %}">
 								   Profile
 								</a>
 							</li>
+							{% endif %}
 
 						</ul>
 		            </nav>

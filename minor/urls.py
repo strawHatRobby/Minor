@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
+from django.views.generic import TemplateView
 from . import views
 urlpatterns = [
     url(r'^$',views.home),
@@ -28,5 +28,10 @@ urlpatterns = [
     url(r'^courses/',include('courses.urls',namespace='course')),
     url(r'^api/v1/courses/',include('rest_api.urls',namespace='rest_api')),
     url(r'^api_auth/',include('rest_framework.urls',namespace='rest_framework')),
+    
+    # static sites
+     url(r'^about/$', TemplateView.as_view(template_name='about.html')),
+     
+
     
 ]

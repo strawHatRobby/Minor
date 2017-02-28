@@ -9,6 +9,7 @@ from django.views.generic import (
 # Create your views here.
 from . import models
 from minor import settings
+from datetime import datetime
 
 from twilio.rest import TwilioRestClient
 import string
@@ -25,12 +26,20 @@ class AssignmentDetailView(DetailView):
 from django import forms
 
 class AssignmentForm(forms.ModelForm):
+    def clean_date(self):
+        submission_date = self.cleaned_data['submission_date']
+        if submission_date < datetime.now():
+            raise forms.ValidationError("The date cannot be in the past!")
+        return submission_date
+        
     class Meta:
         model = models.Assignment
         fields = ['title', 'content', 'marks', 'submission_date', 'subject_id']
         widgets = {
             'content': PagedownWidget(show_preview=True)
         }
+    
+   
 
 class AssignmentCreateView(CreateView):
     form_class = AssignmentForm
