@@ -1,5 +1,7 @@
 from django.conf.urls import url,include
 from . import views
+from rest_framework.urlpatterns import format_suffix_patterns
+
 urlpatterns = [
     url(r'^assignments/',include('assignments.urls',namespace='assignments')),
     url(r'^course_list/$',views.ListCreateCourse.as_view(), name='course_list'),
@@ -13,3 +15,5 @@ urlpatterns = [
     url(r'^question_list/$',views.ListCreateQuestion.as_view(), name='question_list'),
     url(r'^question_list/(?P<pk>\d+)/$',views.RetrieveUpdateDestroyQuestion.as_view(), name='question_update'),
     ]
+    
+urlpatterns = format_suffix_patterns(urlpatterns)
